@@ -51,6 +51,8 @@ roles/
     - "8"
     - "9"
 
+*Tested on Rocky Linux 8.7 (Green Obsidian)*
+
 ## Linter
 
 - [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)
