@@ -5,9 +5,8 @@
     replace: "{{ item.replace }}"
     backup: true
   loop:
-    - { regexp: '^server', replace: '#server' }
-    - { regexp: '^pool',   replace: '#pool' }
-
+    - {regexp: '^server', replace: '#server'}
+    - {regexp: '^pool', replace: '#pool'}
 - name: Edit /etc/chrony.conf
   ansible.builtin.blockinfile:
     path: /etc/chrony.conf
@@ -17,16 +16,13 @@
       server 1.jp.pool.ntp.org iburst
       server 2.jp.pool.ntp.org iburst
       server 3.jp.pool.ntp.org iburst
-
 - name: Enable and restart service chronyd
   ansible.builtin.systemd:
     enabled: yes
     name: chronyd
     state: restarted
-
 - name: Permit traffic in default zone for ntp service
   ansible.posix.firewalld:
     service: ntp
     permanent: yes
     state: enabled
-

@@ -2,7 +2,6 @@
   ansible.builtin.yum:
     name: "*"
     state: latest
-
 - name: Install packages
   ansible.builtin.yum:
     name:
@@ -13,18 +12,15 @@
       - screen
       - chrony
     state: latest
-
 - name: Add gh-cli repo
   get_url:
     url: https://cli.github.com/packages/rpm/gh-cli.repo
     dest: /etc/yum.repos.d/gh-cli.repo
-
 - name: Install gh-cli
   ansible.builtin.yum:
     name: gh
     enablerepo: gh-cli
     state: latest
-
 - name: Install browsers
   ansible.builtin.yum:
     name:
@@ -33,7 +29,6 @@
       - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/lynx-2.8.9-2.el8.x86_64.rpm
     state: latest
   when: ansible_distribution_major_version == 8
-
 - name: Install browsers
   ansible.builtin.yum:
     name:
@@ -42,4 +37,3 @@
       - http://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lynx-2.8.9-19.el9.x86_64.rpm
     state: latest
   when: ansible_distribution_major_version == 9
-

@@ -1,6 +1,6 @@
 - name: Edit /etc/vimrc
   ansible.builtin.blockinfile:
-    path:  /etc/vimrc
+    path: /etc/vimrc
     backup: true
     marker: "\" {mark} ANSIBLE MANAGED BLOCK"
     block: |
@@ -30,4 +30,3 @@
       set wildmode=list:longest
       set wrapscan
       syntax enable
-

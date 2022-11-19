@@ -1,6 +1,6 @@
 - name: Edit /etc/profile.d/bashrc.sh
   ansible.builtin.blockinfile:
-    path:  /etc/profile.d/bashrc.sh
+    path: /etc/profile.d/bashrc.sh
     backup: true
     create: true
     marker: "\" {mark} ANSIBLE MANAGED BLOCK"
@@ -19,4 +19,3 @@
       alias lrandom64='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 64 | head -n 1 | tr '[:upper:]' '[:lower:]''
       alias lrandom128='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 128 | head -n 1 | tr '[:upper:]' '[:lower:]''
       alias easypush="git commit -m $(lrandom16) && git push"
-

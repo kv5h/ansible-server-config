@@ -2,7 +2,6 @@ GIT_USER_NAME: ""
 GIT_USER_EMAIL: ""
 DOCKER_USER: ""
 DOCKER_USER_PASSWORD: ""
-
 # For validation
 COMPATIBLE_OS_FAMILY:
   - RedHat

@@ -10,22 +10,18 @@
       - docker-logrotate
       - docker-engine
     state: absent
-
 - name: Update all packages to their latest version
   ansible.builtin.yum:
     name: "*"
     state: latest
-
 - name: Install yum-utils
   ansible.builtin.yum:
     name: yum-utils
     state: latest
-
 - name: Add docker-ce repo
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
-
 - name: Install docker engine
   ansible.builtin.yum:
     name:
@@ -34,14 +30,12 @@
       - containerd.io
       - docker-compose-plugin
     state: latest
-
 - name: Restart and enable service docker and reload the daemon
   ansible.builtin.systemd:
     name: docker
     state: restarted
     daemon_reload: true
     enabled: true
-
 - name: Add the docker user
   ansible.builtin.user:
     name: "{{ DOCKER_USER }}"
@@ -49,4 +43,3 @@
     shell: /bin/bash
     groups: wheel,docker
     append: yes
-

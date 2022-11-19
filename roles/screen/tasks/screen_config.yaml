@@ -1,6 +1,6 @@
 - name: Edit /etc/screenrc
   ansible.builtin.blockinfile:
-    path:  /etc/screenrc
+    path: /etc/screenrc
     backup: true
     block: |
       altscreen on
@@ -19,4 +19,3 @@
       termcapinfo xterm ti@:te@
       termcapinfo xterm-color ti@:te@
       vbell on
-

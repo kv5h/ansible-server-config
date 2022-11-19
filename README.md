@@ -50,3 +50,7 @@ roles/
 - COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
     - "8"
     - "9"
+
+## Linter
+
+- [yamlfmt](https://github.com/google/yamlfmt)
