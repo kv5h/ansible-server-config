@@ -1,0 +1,8 @@
+all:
+  hosts:
+    host1:
+      ansible_host: <IP Address/ Hostname>
+      ansible_port: <Port>
+      ansible_user: <User>
+      ansible_password: <Password>
+      ansible_ssh_private_key_file: </path/to/pem>

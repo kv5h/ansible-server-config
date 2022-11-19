@@ -1,0 +1,33 @@
+- name: Edit /etc/vimrc
+  ansible.builtin.blockinfile:
+    path:  /etc/vimrc
+    backup: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      nnoremap j gj
+      nnoremap k gk
+      set autoread
+      set expandtab
+      set fenc=utf-8
+      set hidden
+      set hlsearch
+      set ignorecase
+      set incsearch
+      set laststatus=2
+      set list listchars=tab:>-,trail:~,extends:>,precedes:<
+      set nobackup
+      set number
+      set noswapfile
+      "set paste
+      set shiftwidth=2
+      set showcmd
+      set showmatch
+      set smartcase
+      set smartindent
+      set tabstop=2
+      set virtualedit=onemore
+      "set visualbell
+      set wildmode=list:longest
+      set wrapscan
+      syntax enable
+

@@ -1,0 +1,9 @@
+- name: Validate OS family
+  ansible.builtin.assert:
+    that: ansible_os_family in COMPATIBLE_OS_FAMILY
+    fail_msg: "The OS family of target host is not compatible."
+
+- name: Validate OS distribution version
+  ansible.builtin.assert:
+    that: ansible_distribution_major_version in COMPATIBLE_DISTRIBUTION_MAJOR_VERSION
+    fail_msg: "The OS distribution version of target host is not compatible."
