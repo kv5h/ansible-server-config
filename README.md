@@ -49,4 +49,4 @@ roles/
    - RedHat
 - COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
     - "8"
-   - "9
+    - "9"
