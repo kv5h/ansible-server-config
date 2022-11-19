@@ -53,4 +53,4 @@ roles/
 
 ## Linter
 
-- [yamlfmt](https://github.com/google/yamlfmt)
+- [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)
