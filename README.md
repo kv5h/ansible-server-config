@@ -45,8 +45,8 @@ roles/
 
 ## Compatibility
 
-COMPATIBLE_OS_FAMILY:
-  - RedHat
-COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
-  - "8"
-  - "9
+- COMPATIBLE_OS_FAMILY:
+   - RedHat
+- COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
+    - "8"
+   - "9
