@@ -6,8 +6,10 @@
     - validation
     - yum
     - bashrc
-    - vim
+    - chrony
+    - direnv
+    - docker
+    - git
     - screen
     - sysctl
-    - chrony
-    - docker
+    - vim

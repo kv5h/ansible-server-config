@@ -18,3 +18,4 @@
       alias lrandom64='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 64 | head -n 1 | tr '[:upper:]' '[:lower:]''
       alias lrandom128='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 128 | head -n 1 | tr '[:upper:]' '[:lower:]''
       alias easypush="git commit -m $(cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 16 | head -n 1) && git push"
+      eval "$(direnv hook bash)"

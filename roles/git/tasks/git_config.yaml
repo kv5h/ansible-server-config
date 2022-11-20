@@ -2,9 +2,9 @@
   ansible.builtin.git_config:
     name: user.name
     scope: global
-    value: {? {GIT_USER_NAME: ''} : ''}
+    value: "{{ GIT_USER_NAME }}"
 - name: Git config - email
   ansible.builtin.git_config:
     name: user.email
     scope: global
-    value: {? {GIT_USER_EMAIL: ''} : ''}
+    value: "{{ GIT_USER_EMAIL }}"

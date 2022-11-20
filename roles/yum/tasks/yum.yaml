@@ -21,19 +21,19 @@
     name: gh
     enablerepo: gh-cli
     state: latest
-- name: Install browsers
+- name: Install browsers - RHEL8
   ansible.builtin.yum:
     name:
       - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/perl-NKF-2.1.4-8.el8.x86_64.rpm
       - https://download-ib01.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el8.x86_64.rpm
       - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/lynx-2.8.9-2.el8.x86_64.rpm
     state: latest
-  when: ansible_distribution_major_version == 8
-- name: Install browsers
+  when: ansible_distribution_major_version == "8"
+- name: Install browsers - RHEL9
   ansible.builtin.yum:
     name:
       - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/p/perl-NKF-2.1.4-23.el9.x86_64.rpm
       - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el9.x86_64.rpm
       - http://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lynx-2.8.9-19.el9.x86_64.rpm
     state: latest
-  when: ansible_distribution_major_version == 9
+  when: ansible_distribution_major_version == "9"

@@ -1,47 +1,6 @@
 # ansible-server-config
+
 Ansible module for initial setup virtual machine
-
-## Structure
-
-```
-roles/
-├── bashrc
-│   └── tasks
-│       ├── bashrc_config.yaml
-│       └── main.yaml
-├── chrony
-│   └── tasks
-│       ├── chrony_config.yaml
-│       └── main.yaml
-├── docker
-│   └── tasks
-│       ├── install_docker.yaml
-│       └── main.yaml
-├── git
-│   └── tasks
-│       ├── git_config.yaml
-│       └── main.yaml
-├── screen
-│   └── tasks
-│       ├── main.yaml
-│       └── screen_config.yaml
-├── sysctl
-│   └── tasks
-│       ├── main.yaml
-│       └── sysctl_config.yaml
-├── validation
-│   └── tasks
-│       ├── main.yaml
-│       └── os_validation.yaml
-├── vim
-│   └── tasks
-│       ├── main.yaml
-│       └── vim_config.yaml
-└── yum
-    └── tasks
-        ├── main.yaml
-        └── yum.yaml
-```
 
 ## Compatibility
 
@@ -52,6 +11,12 @@ roles/
     - "9"
 
 *Tested on Rocky Linux 8.7 (Green Obsidian)*
+
+## Run playbook
+
+```bash
+ansible-playbook ansible-server-config.yaml -i inventory/inventory.yaml [-l <host>]
+```
 
 ## Linter
 
