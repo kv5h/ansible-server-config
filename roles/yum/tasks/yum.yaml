@@ -7,10 +7,11 @@
     name:
       - epel-release
       - 'dnf-command(config-manager)'
-      - git
-      - vim
-      - screen
       - chrony
+      - dnf-automatic
+      - git
+      - screen
+      - vim
     state: latest
 - name: Add gh-cli repo
   get_url:
@@ -37,3 +38,30 @@
       - http://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lynx-2.8.9-19.el9.x86_64.rpm
     state: latest
   when: ansible_distribution_major_version == "9"
+- name: Edit /etc/dnf/automatic.conf
+  ansible.builtin.replace:
+    path: /etc/dnf/automatic.conf
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+    backup: true
+  loop:
+    - {regexp: '^apply_updates', replace: '#apply_updates'}
+    - {regexp: '^download_updates', replace: '#download_updates'}
+    - {regexp: '^email_from', replace: '#email_from'}
+    - {regexp: '^email_to', replace: '#email_to'}
+    - {regexp: '^email_host', replace: '#email_host'}
+- name: Edit /etc/dnf/automatic.conf
+  ansible.builtin.blockinfile:
+    path: /etc/dnf/automatic.conf
+    backup: true
+    block: |
+      apply_updates = yes
+      download_updates = yes
+- name: Enable and restart dnf-automatic
+  ansible.builtin.systemd:
+    enabled: yes
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - dnf-automatic.timer
+    - dnf-automatic.service
