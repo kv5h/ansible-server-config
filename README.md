@@ -1,3 +1,5 @@
+[![](https://img.shields.io/badge/Linter-google_yamlfmt-blue.svg)](https://github.com/google/yamlfmt)
+
 # ansible-server-config
 
 Ansible module for initial setup virtual machine
@@ -18,6 +20,3 @@ Ansible module for initial setup virtual machine
 ansible-playbook ansible-server-config.yaml -i inventory/inventory.yaml [-l <host>]
 ```
 
-## Linter
-
-- [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)
