@@ -71,6 +71,23 @@ if [ -x /usr/bin/dircolors ]; then
     export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 fi
 
+# if the command-not-found package is installed, use it
+if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-not-found ]; then
+  function command_not_found_handle {
+    # check because c-n-f could've been removed in the meantime
+    if [ -x /usr/lib/command-not-found ]; then
+       /usr/lib/command-not-found -- "$1"
+       return $?
+    elif [ -x /usr/share/command-not-found/command-not-found ]; then
+       /usr/share/command-not-found/command-not-found -- "$1"
+       return $?
+    else
+       printf "%s: command not found\n" "$1" >&2
+       return 127
+    fi
+  }
+fi
+
 alias ll='ls -laG'
 export PS1="[\u@\h_\$(date +%Y%m%d-%H%M%S)_\w]\n>>> "
 alias random8='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 8 | head -n 1'

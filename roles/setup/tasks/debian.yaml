@@ -23,10 +23,10 @@
       - lynx
     state: latest
 ################## bashrc ##################
-- name: Copy /etc/profile.d/bashrc.sh
+- name: Copy /etc/bash.bashrc
   ansible.builtin.copy:
     src: ../files/bashrc_deb.sh
-    dest: /etc/profile.d/bashrc.sh
+    dest: /etc/bash.bashrc
     backup: true
 ################## chrony ##################
 - name: Edit /etc/chrony/chrony.conf
