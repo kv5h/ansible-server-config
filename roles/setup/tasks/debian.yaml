@@ -25,7 +25,7 @@
 ################## bashrc ##################
 - name: Copy /etc/profile.d/bashrc.sh
   ansible.builtin.copy:
-    src: ../files/bashrc_dev.sh
+    src: ../files/bashrc_deb.sh
     dest: /etc/profile.d/bashrc.sh
     backup: true
 ################## chrony ##################
