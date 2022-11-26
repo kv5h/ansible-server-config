@@ -4,12 +4,4 @@
     - ./vars/variables.yaml
   roles:
     - validation
-    - yum
-    - bashrc
-    - chrony
-    - direnv
-    - docker
-    - git
-    - screen
-    - sysctl
-    - vim
+    - setup

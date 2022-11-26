@@ -1,7 +1,0 @@
-- name: Edit /etc/sysctl.conf
-  ansible.builtin.blockinfile:
-    path: /etc/sysctl.conf
-    backup: true
-    block: |
-      net.ipv6.conf.all.disable_ipv6 = 1
-      net.ipv6.conf.default.disable_ipv6 = 1

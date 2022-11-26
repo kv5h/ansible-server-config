@@ -20,3 +20,8 @@ Ansible module for initial setup virtual machine
 ansible-playbook ansible-server-config.yaml -i inventory/inventory.yaml [-l <host>]
 ```
 
+## Gathering facts
+
+```bash
+ansible all -m ansible.builtin.gather_facts --tree /tmp/facts -i inventory/inventory.yaml
+```

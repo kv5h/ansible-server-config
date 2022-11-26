@@ -1,3 +1,4 @@
+################## yum ##################
 - name: Update all packages to their latest version
   ansible.builtin.yum:
     name: "*"
@@ -65,3 +66,69 @@
   with_items:
     - dnf-automatic.timer
     - dnf-automatic.service
+################## bashrc ##################
+- name: Copy /etc/profile.d/bashrc.sh
+  ansible.builtin.copy:
+    src: ../files/bashrc.sh
+    dest: /etc/profile.d/bashrc.sh
+    backup: true
+################## chrony ##################
+- name: Edit /etc/chrony.conf
+  ansible.builtin.replace:
+    path: /etc/chrony.conf
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+    backup: true
+  loop:
+    - {regexp: '^server', replace: '#server'}
+    - {regexp: '^pool', replace: '#pool'}
+- name: Edit /etc/chrony.conf
+  ansible.builtin.blockinfile:
+    path: /etc/chrony.conf
+    backup: true
+    block: |
+      server 0.jp.pool.ntp.org iburst
+      server 1.jp.pool.ntp.org iburst
+      server 2.jp.pool.ntp.org iburst
+      server 3.jp.pool.ntp.org iburst
+- name: Enable and restart service chronyd
+  ansible.builtin.systemd:
+    enabled: yes
+    name: chronyd
+    state: restarted
+- name: Permit traffic in default zone for ntp service
+  ansible.posix.firewalld:
+    service: ntp
+    permanent: yes
+    state: enabled
+################## Git ##################
+- name: Git config - name
+  ansible.builtin.git_config:
+    name: user.name
+    scope: global
+    value: "{{ GIT_USER_NAME }}"
+- name: Git config - email
+  ansible.builtin.git_config:
+    name: user.email
+    scope: global
+    value: "{{ GIT_USER_EMAIL }}"
+################## screenrc ##################
+- name: Copy /etc/screenrc
+  ansible.builtin.copy:
+    src: ../files/screenrc
+    dest: /etc/screenrc
+    backup: true
+################## sysctl ##################
+- name: Edit /etc/sysctl.conf
+  ansible.builtin.blockinfile:
+    path: /etc/sysctl.conf
+    backup: true
+    block: |
+      net.ipv6.conf.all.disable_ipv6 = 1
+      net.ipv6.conf.default.disable_ipv6 = 1
+################## vimrc ##################
+- name: Copy /etc/vimrc
+  ansible.builtin.copy:
+    src: ../files/vimrc
+    dest: /etc/vimrc
+    backup: true

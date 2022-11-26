@@ -1,0 +1,16 @@
+altscreen on
+defbce on
+defencoding utf8
+defscrollback 4096
+defutf8 on
+encoding utf8 utf8
+escape ^Ww 
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W}%Y-%m-%d %{W}%c %{g}]'
+shell $SHELL
+startup_message off 
+term xterm-256color
+termcapinfo linux ti@:te@
+termcapinfo xterm ti@:te@
+termcapinfo xterm-color ti@:te@
+vbell on
