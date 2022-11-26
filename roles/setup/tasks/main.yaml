@@ -1,2 +1,4 @@
 - include: rhel.yaml
   when: ansible_os_family == "RedHat"
+- include: debian.yaml
+  when: ansible_os_family == "Debian"

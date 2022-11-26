@@ -7,12 +7,14 @@ Ansible module for initial setup virtual machine
 ## Compatibility
 
 - COMPATIBLE_OS_FAMILY:
-   - RedHat
+    - RedHat
+    - Debian
 - COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
     - "8"
     - "9"
+    - "2022"
 
-*Tested on Rocky Linux 8.7 (Green Obsidian)*
+*Tested on Rocky Linux 8.7 (Green Obsidian) and Kali GNU/Linu 2022.3*
 
 ## Run playbook
 

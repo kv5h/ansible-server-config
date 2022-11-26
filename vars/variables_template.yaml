@@ -5,6 +5,8 @@ DOCKER_USER_PASSWORD: ""
 # For validation
 COMPATIBLE_OS_FAMILY:
   - RedHat
+  - Debian
 COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
   - "8"
   - "9"
+  - "2022"
