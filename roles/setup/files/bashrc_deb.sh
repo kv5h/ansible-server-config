@@ -90,6 +90,8 @@ fi
 
 alias ll='ls -laG'
 export PS1="[\u@\h_\$(date +%Y%m%d-%H%M%S)_\w]\n>>> "
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 alias random8='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 8 | head -n 1'
 alias random16='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 16 | head -n 1'
 alias random32='cat /dev/urandom | base64 | tr -dc "a-zA-Z0-9" | fold -w 32 | head -n 1'
