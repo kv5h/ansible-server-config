@@ -10,6 +10,7 @@
   with_items:
     - 'dnf-command(config-manager)'
     - chrony
+    - direnv
     - dnf-automatic
     - git
     - perl
