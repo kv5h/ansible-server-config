@@ -5,15 +5,21 @@
     state: latest
 - name: Install packages
   ansible.builtin.yum:
-    name:
-      - epel-release
-      - 'dnf-command(config-manager)'
-      - chrony
-      - dnf-automatic
-      - git
-      - screen
-      - vim
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - 'dnf-command(config-manager)'
+    - chrony
+    - dnf-automatic
+    - git
+    - perl
+    - screen
+    - vim
+- name: Install epel-release
+  ansible.builtin.yum:
+    name: epel-release
+    state: latest
+  when: ansible_distribution != "Fedora"
 - name: Add gh-cli repo
   get_url:
     url: https://cli.github.com/packages/rpm/gh-cli.repo
@@ -25,20 +31,32 @@
     state: latest
 - name: Install browsers - RHEL8
   ansible.builtin.yum:
-    name:
-      - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/perl-NKF-2.1.4-8.el8.x86_64.rpm
-      - https://download-ib01.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el8.x86_64.rpm
-      - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/lynx-2.8.9-2.el8.x86_64.rpm
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/perl-NKF-2.1.4-8.el8.x86_64.rpm
+    - https://download-ib01.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el8.x86_64.rpm
+    - https://vault.centos.org/centos/8/PowerTools/x86_64/os/Packages/lynx-2.8.9-2.el8.x86_64.rpm
   when: ansible_distribution_major_version == "8"
 - name: Install browsers - RHEL9
   ansible.builtin.yum:
-    name:
-      - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/p/perl-NKF-2.1.4-23.el9.x86_64.rpm
-      - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el9.x86_64.rpm
-      - http://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lynx-2.8.9-19.el9.x86_64.rpm
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/p/perl-NKF-2.1.4-23.el9.x86_64.rpm
+    - https://download-ib01.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/w/w3m-0.5.3-55.git20220429.el9.x86_64.rpm
+    - http://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/lynx-2.8.9-19.el9.x86_64.rpm
   when: ansible_distribution_major_version == "9"
+- name: Install browsers - Fedora
+  ansible.builtin.yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - w3m
+    - lynx
+  when:
+    - ansible_distribution == "Fedora"
+    - ansible_distribution_major_version | int >= 34
 - name: Edit /etc/dnf/automatic.conf
   ansible.builtin.replace:
     path: /etc/dnf/automatic.conf

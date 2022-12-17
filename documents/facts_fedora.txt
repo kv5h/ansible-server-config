@@ -1,0 +1,8 @@
+ansible_system                         Linux
+ansible_fqdn                           fedora
+ansible_distribution                   Fedora
+ansible_distribution_release
+ansible_distribution_version           37
+ansible_distribution_major_version     37
+ansible_distribution_file_variety      RedHat
+ansible_os_family                      RedHat

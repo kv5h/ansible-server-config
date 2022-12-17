@@ -12,6 +12,7 @@ Ansible module for initial setup virtual machine
 - COMPATIBLE_DISTRIBUTION_MAJOR_VERSION:
     - "8"
     - "9"
+    - "37"
     - "2022"
 
 *Tested on Rocky Linux 8.7 (Green Obsidian) and Kali GNU/Linu 2022.3*
